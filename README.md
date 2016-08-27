@@ -1,13 +1,15 @@
 # Paw-Clone
-In browser http request utility (also learning scalajs)
+In browser http request utility written in scalajs, which compiles to js.
 
 ## Development
-Uses sbt as a build system
+This project uses sbt as a build system
 
 In this directory
 ```
   $ sbt
-  $ ~fastOptJS
+  # Live reload js
+  $ > ~fastOptJS
+  # In another terminal window
   $ python -m SimpleHTTPServer
 ```
 Then navigate to http://localhost:8000/paw-clone-fastopt.html
