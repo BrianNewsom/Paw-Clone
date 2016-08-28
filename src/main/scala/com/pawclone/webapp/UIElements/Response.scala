@@ -6,26 +6,39 @@ import scalatags.JsDom.all._
 
 object Response{
   private val elementId = "responseText"
-  val tag = div(
-    h1(
-      id := "responseStatus"
+  def tag = div(
+    div(
+      textAlign := "center",
+      h3(
+        id := "responseStatus",
+        "Response Code: "
+      )
     ),
-    textarea(
-      id := "responseHeaders",
-      rows := 10,
-      cols := 100
+    div(
+      h4("Headers"),
+      textarea(
+        `class` := "form-control",
+        id := "responseHeaders",
+        disabled := true,
+        rows := 5
+      )
     ),
-    textarea(
-      id := elementId,
-      rows := 20,
-      cols := 100
+    div(
+      h4("Reponse Text"),
+
+      textarea(
+        `class` := "form-control",
+        id := elementId,
+        disabled := true,
+        rows := 10
+      )
     )
   )
 }
 
 case class Response(completedRequest: XMLHttpRequest){
   def render() = {
-    jQuery("#responseStatus").text(completedRequest.status.toString)
+    jQuery("#responseStatus").text("Response Code: " + completedRequest.status.toString)
     jQuery("#responseHeaders").text(completedRequest.getAllResponseHeaders)
     jQuery(s"#${Response.elementId}").text(completedRequest.responseText.toString)
   }

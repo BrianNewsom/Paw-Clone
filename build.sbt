@@ -12,6 +12,7 @@ skip in packageJSDependencies := false
 jsDependencies +=
   "org.webjars" % "jquery" % "2.1.4" / "2.1.4/jquery.js"
 
+
 persistLauncher in Compile := true
 persistLauncher in Test := false
 
