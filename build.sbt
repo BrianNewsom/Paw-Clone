@@ -19,3 +19,4 @@ persistLauncher in Test := false
 libraryDependencies += "com.lihaoyi" %%% "scalatags" % "0.6.0"
 libraryDependencies += "be.doeraene" %%% "scalajs-jquery" % "0.9.0"
 libraryDependencies += "org.scalaj" % "scalaj-http_2.11" % "2.3.0"
+libraryDependencies += "org.scala-js" %%% "scalajs-java-time" % "0.2.0"

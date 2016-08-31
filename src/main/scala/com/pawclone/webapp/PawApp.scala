@@ -1,9 +1,10 @@
 package com.pawclone.webapp
 
 import com.pawclone.webapp.UIElements.Request.{Authorization, GetMethod, HttpMethod, MethodSelect, PostMethod, QueryParams}
-import com.pawclone.webapp.UIElements.{Response, _}
+import com.pawclone.webapp.UIElements.Response._
+import com.pawclone.webapp.UIElements.UIComponent
 import org.scalajs.dom.XMLHttpRequest
-import org.scalajs.dom.ext.Ajax
+import org.scalajs.dom.ext.{Ajax, AjaxException}
 import org.scalajs.dom.html.Div
 import org.scalajs.jquery._
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -42,7 +43,6 @@ object MainUIComponent extends UIComponent {
           value := "http://www.outloud.io:8080/api/feed"
         )
       ),
-      //  Authorization.tag,
       br(),
       QueryParams.tag,
       button(
@@ -50,7 +50,9 @@ object MainUIComponent extends UIComponent {
         id := "submit-query-btn",
         onclick := { () =>
           AjaxFactory(MethodSelect.selected).map { completedRequest =>
-            Response.Response.render(completedRequest)
+            Response.render(completedRequest)
+          }.onFailure { case ajaxException: AjaxException =>
+              FailedResponse.render()
           }
         },
         "Send Request!"
@@ -58,7 +60,7 @@ object MainUIComponent extends UIComponent {
     ), div(
       `class` := "col-md-6",
       h3("Response"),
-      Response.Response.tag
+      Response.tag
     )
   )
 

@@ -8,6 +8,9 @@ import scalatags.JsDom.all._
 object Authorization extends UIComponent {
   override val elementId: String = "request-auth"
 
+  val oauthVersion = "1.0"
+  val oauthSignatureMetho = "HMAC-SHA1"
+
   def tag: TypedTag[Div] = div(
     `class` := "form-group",
     `id` := elementId,
@@ -57,5 +60,13 @@ object Authorization extends UIComponent {
   val requestHeader = {
     // TODO: Make this work
     Map("Authorization" -> "None")
+  }
+
+  def nonce: String = {
+    timestamp + "a"
+  }
+
+  def timestamp: String = {
+    java.time.Instant.now.toEpochMilli.toString
   }
 }

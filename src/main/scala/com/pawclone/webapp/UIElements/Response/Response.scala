@@ -9,9 +9,9 @@ object Response extends UIComponent {
   override val elementId = "response"
 
   val responseStatusElementId = "response-status"
-  val responseTextElementId = "response-text"
 
   def tag = div(
+    `id` := elementId,
     div(
       textAlign := "center",
       h3(
@@ -31,3 +31,20 @@ object Response extends UIComponent {
   }
 }
 
+object FailedResponse extends UIComponent {
+  override val elementId = "response"
+  val responseStatusElementId = "response-status"
+
+  def tag = div(
+    `id` := elementId,
+    div(
+      textAlign := "center",
+      h3(
+        id := responseStatusElementId,
+        "Response Code: 404"
+      )
+    ),
+    ResponseHeaders.tag,
+    ResponseText.tag
+  )
+}
