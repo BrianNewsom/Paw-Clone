@@ -1,5 +1,6 @@
-package com.pawclone.webapp.UIElements
+package com.pawclone.webapp.UIElements.Request
 
+import com.pawclone.webapp.UIElements.UIComponent
 import org.scalajs.jquery._
 import scalatags.JsDom.all._
 

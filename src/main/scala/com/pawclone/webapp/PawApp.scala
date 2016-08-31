@@ -1,5 +1,6 @@
 package com.pawclone.webapp
 
+import com.pawclone.webapp.UIElements.Request.{Authorization, GetMethod, HttpMethod, MethodSelect, PostMethod, QueryParams}
 import com.pawclone.webapp.UIElements.{Response, _}
 import org.scalajs.dom.XMLHttpRequest
 import org.scalajs.dom.ext.Ajax
@@ -83,6 +84,5 @@ object AjaxFactory {
       case _ =>
         throw new Exception("This method is not currently supported")
     }
-
   }
 }

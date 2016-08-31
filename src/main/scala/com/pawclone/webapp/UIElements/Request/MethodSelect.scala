@@ -1,5 +1,6 @@
-package com.pawclone.webapp.UIElements
+package com.pawclone.webapp.UIElements.Request
 
+import com.pawclone.webapp.UIElements.UIComponent
 import org.scalajs.dom.html._
 import scalatags.JsDom.TypedTag
 import scalatags.JsDom.all._
