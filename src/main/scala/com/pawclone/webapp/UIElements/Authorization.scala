@@ -4,9 +4,12 @@ import org.scalajs.dom.html.Div
 import scalatags.JsDom.TypedTag
 import scalatags.JsDom.all._
 
-object Authorization {
+object Authorization extends UIComponent {
+  override val elementId: String = "request-auth"
+
   def tag: TypedTag[Div] = div(
     `class` := "form-group",
+    `id` := elementId,
     h5("OAuth"),
     div(
       label(

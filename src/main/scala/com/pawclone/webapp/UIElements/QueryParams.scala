@@ -3,8 +3,8 @@ package com.pawclone.webapp.UIElements
 import org.scalajs.jquery._
 import scalatags.JsDom.all._
 
-object QueryParams {
-  val elementId = "query-params"
+object QueryParams extends UIComponent {
+  val elementId = "request-params"
 
   var numParamInputs = 1
 

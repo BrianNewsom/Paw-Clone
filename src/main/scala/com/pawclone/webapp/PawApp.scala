@@ -1,6 +1,6 @@
 package com.pawclone.webapp
 
-import com.pawclone.webapp.UIElements._
+import com.pawclone.webapp.UIElements.{Response, _}
 import org.scalajs.dom.XMLHttpRequest
 import org.scalajs.dom.ext.Ajax
 import org.scalajs.dom.html.Div
@@ -11,11 +11,19 @@ import scala.scalajs.js.JSApp
 import scalatags.JsDom.TypedTag
 import scalatags.JsDom.all._
 
-object PawApp extends JSApp {
-  val currentValue = 6
 
-  val mainElement: TypedTag[Div] = div(
+object PawApp extends JSApp {
+  def main(): Unit = {
+    MainUIComponent.render
+  }
+}
+
+object MainUIComponent extends UIComponent {
+  override val elementId = "main-element"
+
+  def tag: TypedTag[Div] = div(
     `class` := "container",
+    `id` := elementId,
     div(
       `class` := "col-md-6",
       h3("Request"),
@@ -29,7 +37,8 @@ object PawApp extends JSApp {
         input(
           `class` := "form-control",
           id := "query-url",
-          `type`    := "text"
+          `type`    := "text",
+          value := "http://www.outloud.io:8080/api/feed"
         )
       ),
       //  Authorization.tag,
@@ -40,7 +49,7 @@ object PawApp extends JSApp {
         id := "submit-query-btn",
         onclick := { () =>
           AjaxFactory(MethodSelect.selected).map { completedRequest =>
-            Response(completedRequest).render()
+            Response.Response.render(completedRequest)
           }
         },
         "Send Request!"
@@ -48,16 +57,12 @@ object PawApp extends JSApp {
     ), div(
       `class` := "col-md-6",
       h3("Response"),
-      Response.tag
+      Response.Response.tag
     )
   )
 
-  def setupUI(): Unit = {
-    jQuery("body").append(mainElement.render)
-  }
-
-  def main(): Unit = {
-    jQuery(setupUI _)
+  def render = {
+    jQuery("body").append(tag.render)
   }
 }
 

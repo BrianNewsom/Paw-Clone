@@ -3,9 +3,8 @@ package com.pawclone.webapp.UIElements
 import org.scalajs.dom.html._
 import scalatags.JsDom.TypedTag
 import scalatags.JsDom.all._
-import org.scalajs.jquery._
 
-object MethodSelect {
+object MethodSelect extends UIComponent {
   val elementId = "query-method"
 
   def tag: TypedTag[Select] =
@@ -17,7 +16,7 @@ object MethodSelect {
     )
 
   def selected: HttpMethod = {
-    jQuery(s"#$elementId").find(":selected").text.toString match {
+    selector.find(":selected").text.toString match {
       case PostMethod.selectText =>
         PostMethod
       case GetMethod.selectText =>
