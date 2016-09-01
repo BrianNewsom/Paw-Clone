@@ -52,7 +52,7 @@ object MainUIComponent extends UIComponent {
           AjaxFactory(MethodSelect.selected).map { completedRequest =>
             Response.render(completedRequest)
           }.onFailure { case ajaxException: AjaxException =>
-              FailedResponse.render()
+              Response.render(ajaxException.xhr)
           }
         },
         "Send Request!"

@@ -18,7 +18,7 @@ object ResponseText extends UIComponent {
   }
 
   def render(completedRequest: XMLHttpRequest) = {
-    if (completedRequest.getResponseHeader("Content-Type") == "application/json"){
+    if (completedRequest.getResponseHeader("Content-Type").contains("application/json")){
       selector.empty()
       val jsonEditor = new JSONEditor(document.getElementById(elementId), JSON.parse("{\"mode\": \"view\"}"))
       jsonEditor.set(JSON.parse(completedRequest.responseText))

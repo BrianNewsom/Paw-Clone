@@ -60,7 +60,11 @@ object QueryParams extends UIComponent {
         str
       } else {
         // TODO: Fix trailing &
-        str + param + "=" + value + "&"
+        if (numParamInputs == int) {
+          str + param + "=" + value
+        } else {
+          str + param + "=" + value + "&"
+        }
       }
     }
   }
